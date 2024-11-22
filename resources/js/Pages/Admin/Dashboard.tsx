@@ -4,9 +4,25 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/Components/ui/card";
 import { DataTable } from "@/Components/DataTable/Index";
 import { User } from "@/types/user";
 import { PageProps } from "@/types";
+import { ColumnDef } from "@tanstack/react-table";
 
 export default function Dashboard({ users }: PageProps<{ users: User[] }>) {
     const { auth } = usePage().props;
+
+    const columns: ColumnDef<User>[] = [
+        {
+            accessorKey: "id",
+            header: "ID",
+        },
+        {
+            accessorKey: "name",
+            header: "Name",
+        },
+        {
+            accessorKey: "email",
+            header: "Email",
+        },
+    ];
 
     return (
         <AuthenticatedLayout
